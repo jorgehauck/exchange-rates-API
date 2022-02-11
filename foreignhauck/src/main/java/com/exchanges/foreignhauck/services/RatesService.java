@@ -2,8 +2,20 @@ package com.exchanges.foreignhauck.services;
 
 import org.springframework.stereotype.Service;
 
-@Service
-public class RatesService {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Service
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+public class RatesService {
 	
+	private Boolean success;
+	private Integer timestamp;
+	private String base;
+	private String date;
+	
+	private Rates rates;
 }
