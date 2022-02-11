@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Rates {
-
+	
 	@JsonProperty("AED")
 	private Double aED;
 	@JsonProperty("AFN")
