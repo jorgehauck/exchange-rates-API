@@ -8,28 +8,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exchanges.foreignhauck.services.RatesService;
-import com.exchanges.foreignhauck.services.RatesServiceAPI;
+import com.exchanges.foreignhauck.services.RatesServiceJSON;
 
 @RestController
 @RequestMapping(value = "/currencys")
 public class RatesController {
 
 	@Autowired
-	private RatesServiceAPI ratesServiceAPI;
-	
+	private RatesService ratesService;
+
 	@GetMapping
-	public ResponseEntity<RatesService> findAllRates() {
-		
-		RatesService service = ratesServiceAPI.findAll();
-		
-		return ResponseEntity.ok().body(service);
+	public ResponseEntity<RatesServiceJSON> findAll() {
+
+		RatesServiceJSON serviceJSON = ratesService.findAll();
+
+		return ResponseEntity.ok().body(serviceJSON);
 	}
 	
-	@GetMapping(value = "/{symbols}")
-	public ResponseEntity<RatesService> findByBase(@PathVariable String symbols) {
+	@GetMapping(value = "{symbols}")
+	public ResponseEntity<RatesServiceJSON> findBySymbols(@PathVariable String symbols) {
 		
-		RatesService service = ratesServiceAPI.findByBaseSymbols(symbols);
+		RatesServiceJSON serviceJSON = ratesService.findBySymbols(symbols);
 		
-		return ResponseEntity.ok().body(service);
+		return ResponseEntity.ok().body(serviceJSON);
 	}
+	
 }

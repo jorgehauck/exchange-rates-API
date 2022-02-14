@@ -1,21 +1,26 @@
 package com.exchanges.foreignhauck.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 @Service
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
 public class RatesService {
+
+	@Autowired
+	private RatesServiceAPI ratesServiceAPI;
 	
-	private Boolean success;
-	private Integer timestamp;
-	private String base;
-	private String date;
 	
-	private Rates rates;
+	public RatesServiceJSON findAll() {
+		
+		RatesServiceJSON serviceJSON = ratesServiceAPI.findAll();
+		
+		return serviceJSON;
+	}
+	
+	public RatesServiceJSON findBySymbols(String symbols) {
+		
+		RatesServiceJSON serviceJSON = ratesServiceAPI.findByBaseSymbols(symbols);
+		
+		return serviceJSON;
+	}
 }

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface RatesServiceAPI {
 
 	@GetMapping(value = "latest?access_key=ca996dc48aa4411b9de0ad8466403701")
-	RatesService findAll();
+	RatesServiceJSON findAll();
 	
 	@GetMapping(value = "latest?access_key=ca996dc48aa4411b9de0ad8466403701&symbols={symbols}")
-	RatesService findByBaseSymbols(@PathVariable String symbols);
+	RatesServiceJSON findByBaseSymbols(@PathVariable String symbols);
 }
